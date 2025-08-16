@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>BV Theorem</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">BV Theorem</h1>
+</header>
+<p>We put <span class="math display">\[E(x; q, a) = \psi(x; q, a) -
+\frac{x}{\varphi(q)}\]</span> for <span class="math inline">\((a,q) =
+1\)</span>. We let <span class="math display">\[E(x; q) =
+\max_{\substack{a \\ (a,q)=1}} |E(x; q, a)|
+  \quad\text{and}\quad
+  E^*(x,q) = \max_{y \le x} E(y; q).\]</span></p>
+<p><strong>Theorem.</strong> Let <span class="math inline">\(A &gt;
+0\)</span> be fixed. Then <span class="math display">\[\sum_{q \le Q}
+E^*(x, q)
+  \ \ll\ x^{1/2} Q (\log x)^6,\]</span> provided that <span
+class="math display">\[x^{1/2} (\log x)^{-A} \ \le\ Q \ \le\
+x^{1/2}.\]</span></p>
+<p><strong>Proof.</strong> First we show that the bound follows from the
+bound <span class="math display">\[\sum_{q \le Q} \frac{q}{\varphi(q)}
+    \sum_{\substack{\chi \bmod q \\ \chi \ \text{primitive}}}
+      \max_{y \le x} \left| \psi(y, \chi) \right|
+  \ \ll\ (x + x^{1/2} Q + x^{1/2} Q^2) (\log x)^5\]</span> for all <span
+class="math inline">\(x \ge 1\)</span>, <span class="math inline">\(Q
+\ge 1\)</span>, where <span class="math display">\[\psi(y, \chi) =
+\sum_{n \le y} \Lambda(n) \chi(n).\]</span> Then we establish this bound
+by an estimation over the bilinear form.</p>
+<p>By orthogonality of characters, we have <span
+class="math display">\[\psi(y; q, a) =
+    \frac{1}{\varphi(q)}
+    \sum_{\chi \bmod q} \overline{\chi}(a) \, \psi(y, \chi).\]</span>
+Then <span class="math display">\[E(y; q, a)
+  = \frac{1}{\varphi(q)} \sum_{\chi \bmod q} \overline{\chi}(a) \,
+\psi&#39;(y, \chi),\]</span> where <span
+class="math display">\[\psi&#39;(y, \chi) =
+  \begin{cases}
+    \psi(y, \chi), &amp; \chi \ne \chi_0,\\
+    \psi(y, \chi_0) - y, &amp; \chi = \chi_0.
+  \end{cases}\]</span> Hence, <span class="math display">\[|E(y; q, a)|
+  \le \frac{1}{\varphi(q)} \sum_{\chi} |\psi&#39;(y, \chi)|.\]</span>
+Note this bound also holds for <span class="math inline">\(E(y;
+q)\)</span>. If <span class="math inline">\(\chi \pmod{q}\)</span> is
+induced by <span class="math inline">\(\chi_1 \pmod{q_1}\)</span>, then
+<span class="math display">\[\psi&#39;(y, \chi) - \psi&#39;(y, \chi_1)
+  = \sum_{\substack{p^k \le y \\ p \mid q}} \chi(p^k) \log p
+  \ \ll\ \sum_{p \mid q} \left[ \frac{\log y}{\log p} \right] \log p
+  \ \ll\ (\log qy)^2.\]</span> Therefore, <span
+class="math display">\[E^*(y, q) \ \ll\ (\log qx)^2
+   + \frac{1}{\varphi(q)} \sum_{\chi} \max_{y \le x} |\psi&#39;(y,
+\chi)|.\]</span> By summing <span class="math inline">\(q\)</span> to
+<span class="math inline">\(Q\)</span>, and considering the right-hand
+side as a combination of primitive characters modulo <span
+class="math inline">\(q\)</span> and its induced characters, we obtain
+<span class="math display">\[\sum_{q \le Q} E^*(y, q)
+  \ \ll\ Q (\log Qx)^2
+     + \sum_{q \le Q} \sum_{\chi}{}^*
+        \max_{y \le x} |\psi&#39;(y, \chi)|
+        \left( \sum_{k \le Q/q} \frac{1}{\varphi(kq)} \right)\]</span>
+<span class="math display">\[\ \ll\ (\log x) \sum_{q \le Q}
+\frac{q}{\varphi(q)}
+        \sum_{\chi}{}^* \max_{y \le x} |\psi&#39;(y,
+\chi)|.\]</span></p>
+<p>We then separate the summation over <span
+class="math inline">\(q\)</span> into <span class="math inline">\([1,
+(\log x)^A]\)</span> and <span class="math inline">\(((\log x)^A,
+Q]\)</span>. The first part we estimate with the bound we assumed is
+correct. Let <span class="math inline">\(R = (\log x)^A\)</span>, then
+we have <span class="math display">\[\ \ll\ (\log x) \sum_{q \le R}
+     \frac{q}{\varphi(q)}
+     \sum_{\chi} {}^*\max_{y \le x} |\psi(y, \chi)|
+     \left( \frac{1}{Q} + \int_{q}^{Q} t^{-2} \, \mathrm{d}t
+\right)\]</span> <span class="math display">\[\ \ll\ x^{1/2} Q (\log
+x)^6
+      + x^{1/2} R^{-1} (\log x)^6
+  \ \ll\ x^{1/2} Q (\log x)^6.\]</span> for <span
+class="math display">\[x^{1/2} (\log x)^{-A} \ \le\ Q \ \le\
+x^{1/2},\]</span> as for the summation of <span
+class="math inline">\(q\)</span> over <span class="math inline">\((R,
+Q]\)</span>, we estimate by the Siegel–Walfisz theorem: <span
+class="math display">\[\ll\ (\log x)^{A} \, x (\log x)^{-2A} \ \ll\ x
+(\log x)^{-A}.\]</span> Therefore, we are left to show the bound is
+correct. The idea is to apply Vaughan’s identity of <span
+class="math inline">\(\sum_{n} \Lambda(n) n^{-s}\)</span>. First note,
+by using the large sieve of characters, it yields <span
+class="math display">\[\sum_{q \le Q} \frac{q}{\varphi(q)}
+\sum_{\chi}{}^*
+     \left| \sum_{m \le M} \sum_{n \le N} a_m b_n \chi(mn)
+\right|\]</span> <span class="math display">\[\ \ll\ (M + Q^2)^{1/2} (N
++ Q^2)^{1/2}
+      \left( \sum_{m \le M} |a_m|^2 \right)^{1/2}
+      \left( \sum_{n \le N} |b_n|^2 \right)^{1/2}.\]</span> Then, we
+want to insert the maximal condition. Let <span
+class="math inline">\(\gamma &gt; 0\)</span> and define <span
+class="math display">\[\delta(\gamma) =
+  \begin{cases}
+    1, &amp; 0 \le \beta \le \gamma, \\
+    0, &amp; \beta &gt; \gamma.
+  \end{cases}\]</span></p>
+<p>Let <span class="math display">\[C = \int_{-\infty}^{\infty}
+\frac{\sin \alpha}{\alpha} \, \mathrm{d}\alpha,\]</span> then <span
+class="math inline">\(C\)</span> exists and <span
+class="math inline">\(C &gt; 0\)</span>. Then <span
+class="math display">\[\int_{-\infty}^{\infty}
+\mathrm{e}^{-i\beta\alpha}
+    \frac{\sin \gamma\alpha}{C\alpha} \, \mathrm{d}\alpha
+  = \delta(\beta),\]</span> and let <span class="math inline">\(A &gt;
+0\)</span>, by integration by parts, it follows <span
+class="math display">\[\delta(\beta) =
+    \int_{-A}^{A} \mathrm{e}^{-i\beta\alpha}
+      \frac{\sin \gamma\alpha}{C\alpha} \, \mathrm{d}\alpha
+    + O\!\left( \frac{1}{A \, |\log \beta|} \right).\]</span></p>
+<p>Let <span class="math inline">\(y &gt; 0\)</span>, by changing
+variables with <span class="math inline">\(\beta = \log mn\)</span> and
+<span class="math display">\[\gamma = \log\left( \left\lfloor y
+\right\rfloor + \tfrac12 \right),\]</span> it yields that for <span
+class="math display">\[\delta(\log mn) =
+  \begin{cases}
+    1, &amp; mn \le y, \\
+    0, &amp; mn \ge y.
+  \end{cases}\]</span> Since <span class="math display">\[\min_{m,n}
+\left| \log\left( \left\lfloor y \right\rfloor + \tfrac12 \right) - \log
+mn \right|
+  = \min\!\left( \log\frac{\left\lfloor y \right\rfloor +
+\tfrac12}{\left\lfloor y \right\rfloor},
+                 \log\frac{\left\lfloor y \right\rfloor +
+1}{\left\lfloor y \right\rfloor + \tfrac12}
+           \right)
+  \gg \frac1{y},\]</span> it follows that <span
+class="math display">\[\delta(\log mn)
+    = \int_{-A}^{A} (mn)^{i\alpha} \frac{\sin\gamma\alpha}{C\alpha} \,
+\mathrm{d}\alpha
+      + O\!\left( \frac{y}{A} \right).\]</span> Therefore, by inserting
+the above as the maximal condition, we get for <span
+class="math inline">\(y \le x\)</span>: <span
+class="math display">\[\sum_{m \le M} \sum_{n \le N} a_m b_n \chi(mn)
+  = \sum_{m \le M} \sum_{n \le N} a_m b_n \chi(mn) \, \delta(\log
+mn)\]</span> <span class="math display">\[\ll \int_{-A}^{A}
+     \left| \sum_{m \le M} a_m m^{i\alpha}
+      \sum_{n \le N} b_n n^{i\alpha} \chi(mn)
+     \frac{\sin\gamma\alpha}{C\alpha} \, \right
+|\mathrm{d}\alpha\]</span> <span class="math display">\[\ll
+\int_{-A}^{A}
+     \left| \sum_{m \le M} a_m m^{i\alpha}
+      \sum_{n \le N} b_n n^{i\alpha} \chi(mn) \right|
+     \min\!\left( \log x, \frac{1}{|\alpha|} \right) \,
+\mathrm{d}\alpha,\]</span> where we take <span class="math inline">\(A =
+x / (MN)\)</span>, and the error term is acceptable.</p>
+<p>Therefore, it follows <span class="math display">\[\sum_{q \le Q}
+\frac{q}{\varphi(q)}
+     \sum_{\chi}{}^* \max_{y \le x}
+        \left| \sum_{m \le M} \sum_{n \le N} a_m b_n \chi(mn)
+\right|\]</span> <span class="math display">\[\ll (\log x MN)
+(M+Q^2)^{1/2} (N+Q^2)^{1/2}
+      \left( \sum_{m \le M} |a_m|^2 \right)^{1/2}
+      \left( \sum_{n \le N} |b_n|^2 \right)^{1/2}.\]</span></p>
+<p>If <span class="math inline">\(Q^2 &gt; x\)</span>, we take <span
+class="math inline">\(M=1\)</span>, <span class="math inline">\(a_1 =
+1\)</span>, <span class="math inline">\(N = x\)</span>, <span
+class="math inline">\(b_n = \Lambda(n)\)</span>, then the bound
+follows.</p>
+<p>If <span class="math inline">\(Q^2 \le x\)</span>, let <span
+class="math inline">\(U = \nu = \min(Q^2, x^{2/3}, x/Q^2)\)</span>. If
+the maximum is taken in <span class="math inline">\(\nu &lt;
+U^2\)</span>, then it also follows. Take <span class="math inline">\(u,
+v\)</span> above to be the ones in Vaughan’s identity, and take <span
+class="math display">\[f(n) = \chi(n) \quad\text{if } n \le u, \qquad
+f(n) = 0 \ \text{otherwise}.\]</span> Then it allows us to write <span
+class="math display">\[T(\chi, Q) = \sum_{j=1}^4 T_j
+          = \sum_{j=1}^4 \sum_{q \le Q} \frac{q}{\varphi(q)}
+             \sum_{\chi}{}^* \max_{y \le x} |S_j(\chi)|.\]</span> Then,
+since <span class="math inline">\(u \le U^2\)</span>, we can bound <span
+class="math inline">\(T_q\)</span> trivially. For <span
+class="math inline">\(j=1\)</span>, by Pólya–Vinogradov inequality, we
+can easily bound <span class="math inline">\(T_1\)</span>. For <span
+class="math inline">\(j=3\)</span>, since we have the bilinear bound for
+<span class="math inline">\(\chi(mn)\)</span>, the bound follows. For
+<span class="math inline">\(j=2\)</span>, we simply split up the sum by
+terms with <span class="math inline">\(m \le u\)</span> and <span
+class="math inline">\(u &lt; m \le U^2\)</span>, and apply the method
+for <span class="math inline">\(T_1\)</span> and <span
+class="math inline">\(T_3\)</span>.<br />
+Then we obtain the bound, and hence, it completes the proof.</p>
+</body>
+</html>
